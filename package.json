@@ -25,7 +25,7 @@
     "y-prosemirror": "^1.2.3"
   },
   "dependencies": {
-    "trystero": "^0.18.0",
-    "yjs": "^13.6.14"
+    "trystero": "^0.20.0",
+    "yjs": "^13.6.19"
   }
 }
