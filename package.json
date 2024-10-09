@@ -13,6 +13,7 @@
     "url": "https://github.com/kahnpoint/y-trystero.git"
   },
   "scripts": {
+    "prepare": "npm i && npm run build",
     "dev": "vite",
     "preview": "vite preview",
     "fmt": "prettier --write .",
