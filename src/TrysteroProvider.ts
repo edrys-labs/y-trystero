@@ -11,7 +11,7 @@ import { Room } from './Room'
 import { emitStatus } from './messagesSend'
 import { rooms } from './connectionMaps'
 import * as error from 'lib0/error'
-import { joinRoom as joinRoomBittorrent } from 'trystero/torrent'
+import { joinRoom as joinRoomBittorrent } from 'trystero'
 
 type TrysteroProviderEvents = {
   status: (arg: { connected: boolean }) => void
