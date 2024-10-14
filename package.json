@@ -21,11 +21,9 @@
   },
   "devDependencies": {
     "prettier": "^3.2.5",
-    "vite": "^5.2.0",
-    "y-prosemirror": "^1.2.3"
-  },
-  "dependencies": {
     "trystero": "^0.20.0",
+    "vite": "^5.2.0",
+    "y-prosemirror": "^1.2.3",
     "yjs": "^13.6.20"
   }
 }
