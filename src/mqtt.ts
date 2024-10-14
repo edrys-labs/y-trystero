@@ -1,2 +1,2 @@
 // Trystero reexport
-export { joinRoom } from "trystero/mqtt";
+export { joinRoom } from 'trystero/mqtt'

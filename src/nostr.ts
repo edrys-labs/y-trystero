@@ -1,2 +1,2 @@
 // Trystero reexport
-export { joinRoom } from "trystero/nostr";
+export { joinRoom } from 'trystero/nostr'

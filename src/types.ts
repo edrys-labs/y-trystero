@@ -5,4 +5,4 @@ export enum MessageType {
   BcPeerId = 4,
 }
 
-export type PeerId = string;
+export type PeerId = string

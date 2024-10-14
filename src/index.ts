@@ -1,6 +1,6 @@
-import { TrysteroProvider } from "./TrysteroProvider";
+import { TrysteroProvider } from './TrysteroProvider'
 
-export { TrysteroProvider };
+export { TrysteroProvider }
 
 /*
 yjs usage
