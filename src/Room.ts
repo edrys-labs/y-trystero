@@ -44,6 +44,8 @@ export class Room {
   _docUpdateHandler: (update: Uint8Array, _origin: any) => void
   _awarenessUpdateHandler: (changed: any, _origin: any) => void
   _beforeUnloadHandler: () => void
+  _callbackPeerJoin?: (peerId: string) => void
+  _callbackPeerLeave?: (peerId: string) => void
 
   // the raw trystero room
   trysteroRoom: TrysteroRoom
@@ -111,6 +113,10 @@ export class Room {
         )
         sendTrysteroConn(this, peerId, encoder)
       }
+
+      if (this._callbackPeerJoin) {
+        this._callbackPeerJoin(peerId)
+      }
     })
 
     // actions for when a peer leaves the room
@@ -125,6 +131,10 @@ export class Room {
         },
       ])
       checkIsSynced(this)
+
+      if (this._callbackPeerLeave) {
+        this._callbackPeerLeave(peerId)
+      }
     })
     console.log('conns', this.trysteroConns)
 
@@ -181,6 +191,14 @@ export class Room {
     } else if (typeof process !== 'undefined') {
       process.on('exit', this._beforeUnloadHandler)
     }
+  }
+
+  onPeerJoin(callback: (peerId: string) => void) {
+    this._callbackPeerJoin = callback
+  }
+
+  onPeerLeave(callback: (peerId: string) => void) {
+    this._callbackPeerLeave = callback
   }
 
   connect() {
