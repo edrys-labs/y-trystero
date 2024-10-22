@@ -73,7 +73,11 @@ export class Room {
     this.bcconnected = false
 
     // create a trystero room
-    const config = { appId: provider.appId, password: provider.password }
+    const config = {
+      appId: provider.appId,
+      password: provider.password,
+      ...provider.peerOpts,
+    }
     this.trysteroRoom = provider.joinRoom(config, name)
 
     // create actions for sending and receiving messages
