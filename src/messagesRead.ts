@@ -11,8 +11,7 @@ import { broadcastBcPeerId } from './messagesSend'
 // read message from buffer and emit message
 export const readMessage = (
   room: Room,
-  buf: Uint8Array,
-  syncedCallback: () => void
+  buf: Uint8Array
 ): encoding.Encoder | null => {
   const decoder = decoding.createDecoder(buf)
   const encoder = encoding.createEncoder()
@@ -38,7 +37,7 @@ export const readMessage = (
         syncMessageType === syncProtocol.SyncMessageType.Step2 &&
         !room.synced
       ) {
-        syncedCallback()
+        checkIsSynced(room)
       }
       // sync step 1
       if (syncMessageType === syncProtocol.SyncMessageType.Step1) {
@@ -109,18 +108,6 @@ export const readMessage = (
     return null
   }
   return encoder
-}
-
-// read a message from a peer and emit it
-export const readPeerMessage = (
-  peerConn: TrysteroConn,
-  buf: Uint8Array
-): encoding.Encoder => {
-  const room = peerConn.room
-  return readMessage(room, buf, () => {
-    peerConn.synced = true
-    checkIsSynced(room)
-  })
 }
 
 // check if all peers are synced

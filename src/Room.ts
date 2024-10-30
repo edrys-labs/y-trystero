@@ -87,7 +87,7 @@ export class Room {
     this.getYjsMessage = getYjsMessage
 
     this.getYjsMessage((data, peerId) => {
-      const message = readMessage(this, data, () => {})
+      const message = readMessage(this, data)
       if (message) {
         broadcastRoomMessage(this, message)
       }
@@ -146,7 +146,7 @@ export class Room {
     this._bcSubscriber = (data) =>
       cryptoutils.decrypt(new Uint8Array(data), key).then((m) =>
         this.mux(() => {
-          const reply = readMessage(this, m, () => {})
+          const reply = readMessage(this, m)
           if (reply) {
             broadcastBcMessage(this, reply)
           }
